@@ -1,5 +1,6 @@
 @extends('home-layout')
 @section('PageTitle', $room->name)
+@section('bg-class', 'test2')
 @section('content')
     @if($errors->first())
         <div class="row alert alert-danger">

@@ -21,7 +21,7 @@
     <script type="text/javascript" defer src="{{asset('js/script.js')}}"></script>
 </head>
 <body>
-<div class="big-bg">
+<div class="big-bg @yield('bg-class')">
     <!-- header -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">{{__('Tech Booking')}}</a>
@@ -119,7 +119,7 @@
 <!-- footer -->
 <div class="row bg-dark">
     <h5 class="text-center text-white mx-auto py-2 col-12">{{__('Copyrights reserved ').now()->year}} &copy</h5>
-    <a class="text-white mx-auto py-2" href="/">{{__('Home')}}</a>
+    <a class="text-white mx-auto py-2" href="{{route('home')}}">{{__('Home')}}</a>
 </div>
 <a href="#" class="scrollToTop" title="{{__('Scroll to top')}}"></a>
 </body>

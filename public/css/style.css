@@ -35,9 +35,6 @@ body {
 }
 
 .big-bg {
-    /*background-image: url(../images/bg-image.jpg);*/
-    background-size: cover;
-    background-repeat: no-repeat;
     min-height: 100vh;
 }
 
@@ -61,7 +58,7 @@ body {
 }
 
 .col-8.mx-auto.border.m-3:nth-child(even), .filtered-data .col-8.mx-auto.border.m-3:nth-child(even) {
-    background-color: rgb(253, 209, 168);
+    background-color: rgb(174, 217, 253);
 }
 
 .col-8.mx-auto.border.m-3:nth-child(odd), .filtered-data .col-8.mx-auto.border.m-3:nth-child(odd) {
@@ -99,6 +96,16 @@ body {
     z-index: 5;
     display: none;
 }
+.hide-show span {
+     background: #ccc;
+     font-size: 1em;
+     padding: 0.5em;
+     float: right;
+     -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+     border-radius: 5px;
+     cursor: pointer;
+ }
 div.room_row {
     border-radius: 8px;
     box-shadow: 5px 5px 10px rgba(100,20,30, 0.4);
@@ -106,18 +113,6 @@ div.room_row {
 div.new_rooms_div > div.card, .room_row {
     display: none;
 }
-
-.hide-show span {
-    background: #ccc;
-    font-size: 1em;
-    padding: 0.5em;
-    float: right;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .custom-control-input {
     position: relative;
 }

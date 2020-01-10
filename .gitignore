@@ -26,3 +26,6 @@ Homestead.json
 /.editorconfig
 /phpunit.xml
 .idea
+
+# Gulp
+gulpfile.js

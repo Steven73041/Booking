@@ -1,5 +1,6 @@
 @extends('home-layout')
 @section('PageTitle', $title?$title:'Rooms')
+@section('bg-class', 'test')
 @section('content')
     <div class="content">
         @if($title==='Rooms')

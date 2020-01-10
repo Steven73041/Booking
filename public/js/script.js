@@ -1,15 +1,3 @@
-$(function () {
-    $('div>input[name="datetimes"]').daterangepicker({
-        timePicker: true,
-        minDate: new Date(),
-        startDate: moment().startOf('hour'),
-        endDate: moment().startOf('hour').add(48, 'hour'),
-        locale: {
-            format: 'DD-MM-YYYY'
-        },
-    });
-});
-
 (function () {
     'use strict';
     window.addEventListener('load', function () {
@@ -26,6 +14,15 @@ $(function () {
     }, false);
 })();
 $(function () {
+    $('div>input[name="datetimes"]').daterangepicker({
+        timePicker: true,
+        minDate: new Date(),
+        startDate: moment().startOf('hour'),
+        endDate: moment().startOf('hour').add(48, 'hour'),
+        locale: {
+            format: 'DD-MM-YYYY'
+        },
+    });
     $('.hide-show').show();
     $('.hide-show span').addClass('show')
     $('.hide-show span').click(function () {
@@ -78,6 +75,7 @@ $(function () {
         translateX: +window.outerWidth/3,
         duration: 1000
     });
+
     setTimeout(function(){
         $('.new_rooms_div > div.card, .room_row:nth-child(odd), .room_row:nth-child(even)').fadeIn(1500);
     },1000);
