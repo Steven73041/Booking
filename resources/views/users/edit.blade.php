@@ -25,6 +25,8 @@
         <input type="text" name="firstName" class="form-control form-control-md" value="{{$user->firstName}}" placeholder="First Name" >
     <label for="lastName">{{__('Last Name')}}</label>
         <input type="text" name="lastName" class="form-control form-control-md" value="{{$user->lastName}}" placeholder="Last Name" >
+        <label for="lastName">{{__('Age')}}</label>
+        <input type="text" name="age" class="form-control form-control-md" value="{{$user->age}}" placeholder="Age" >
     </div>
     </div>
 

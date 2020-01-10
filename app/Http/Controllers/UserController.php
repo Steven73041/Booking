@@ -95,8 +95,11 @@ class UserController extends Controller{
             'phone' => 'max:20|regex:/[0-9]+$/',
             'city' => 'max:25|regex:/[a-zA-Z]+$/',
             'password' => 'confirmed|required|max:25|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/i',
+	        'age' => 'max:2|regex:/[0-9]+$/',
         ],$errors = [
-            'city.regex' => 'Enter a valid City',
+        	'age.regex' => 'Age should be a number',
+	        'age.max' => 'Max Numbers: 2',
+	        'city.regex' => 'Enter a valid City',
             'phone.regex' => 'Only numbers are allowed in phone field',
             'email.regex' => 'Please enter a valid e-mail address',
             'email.unique' => 'This e-mail is already in use',
@@ -115,7 +118,8 @@ class UserController extends Controller{
             'email' => $request->email,
             'phone' => $request->phone,
             'city' => $request->city,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+	        'age' => $request->age
         ]);
         return back();
     }
