@@ -22,5 +22,14 @@
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17"
+    },
+    "dependencies": {
+        "gulp-autoprefixer": "^7.0.1",
+        "gulp-changed": "^4.0.2",
+        "gulp-if": "^3.0.0",
+        "gulp-imagemin": "^6.2.0",
+        "gulp-jshint": "^2.1.0",
+        "gulp-sass": "^4.0.2",
+        "gulp-uglify": "^3.0.2"
     }
 }
