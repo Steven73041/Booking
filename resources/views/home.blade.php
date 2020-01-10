@@ -39,10 +39,12 @@
     <!-- our newest rooms! -->
     <div clas="row"><h1 class="text-center my-2">{{__('Our Newest Rooms!')}}</h1></div>
     <!-- Cards -->
-    <div class="row">
+    <div class="row new_rooms_div">
         @foreach($newrooms as $newroom)
             <div class="card mx-auto col-md-2">
-            <img class="card-img-top mx-auto mt-1" src="{{$newroom->photos[0]->src??''}}" alt="{{$newroom->name}}"/>
+                <div class="text-center">
+                    <img class="card-img-top mx-auto mt-3" src="{{$newroom->photos[0]->src??''}}" alt="{{$newroom->name}}"/>
+                </div>
                 <div class="card-body p-1 text-center">
                     <h5 class="card-title p-0 m-0">{{$newroom->name}}</h5>
                 </div>

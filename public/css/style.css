@@ -35,7 +35,7 @@ body {
 }
 
 .big-bg {
-    background-image: url(../images/bg-image.jpg);
+    /*background-image: url(../images/bg-image.jpg);*/
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -99,6 +99,13 @@ body {
     z-index: 5;
     display: none;
 }
+div.room_row {
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px rgba(100,20,30, 0.4);
+}
+div.new_rooms_div > div.card, .room_row {
+    display: none;
+}
 
 .hide-show span {
     background: #ccc;
@@ -143,6 +150,7 @@ body {
     width: 500px;
     height: 350px;
 }
+
 .row.room_info_row {
     padding: 40px;
     border-radius: 5px;
@@ -162,21 +170,17 @@ body {
     }
 }
 @media only screen and (max-width: 800px) {
-
     .big-bg {
         background-image: url(../images/bg-image2.jpg);
         background-repeat: repeat;
         height: auto;
     }
-
     .container.col-md-4.mx-auto {
         padding: 15px;
         background-color: #ccc;
     }
-
     .name-pos {
         right: auto;
         position: relative;
     }
-
 }

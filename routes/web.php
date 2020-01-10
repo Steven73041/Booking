@@ -24,8 +24,10 @@ Route::resource('/favorites', 'FavoritesController')->middleware('auth');
 Route::get('rooms/{room}', 'RoomsController@slug')->name('rooms.slug');
 Route::get('/', 'PageController@home')->name('home'); //PageController function home
 Route::get('/my-rooms', 'RoomsController@myRooms')->middleware('auth')->name('rooms.myRooms');
-Route::get('/contact', 'PageController@showContact');
-Route::get('/stripe', 'PageController@showStripe');
+Route::get('/contact', 'PageController@showContact')->name('page.contact');
+Route::get('/about', 'PageController@showAbout')->name('page.about');;
+
+//Route::get('/stripe', 'PageController@showStripe');
 
 /*
  * POST Routes

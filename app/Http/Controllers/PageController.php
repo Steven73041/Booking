@@ -23,6 +23,12 @@ class PageController extends Controller {
         ]);
     }
 
+	public function showAbout() {
+		return view('about-us', [
+			'title' => 'About Us',
+		]);
+	}
+
     public function showContact() {
         return view('contact', [
             'title' => 'Contact',

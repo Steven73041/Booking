@@ -7,17 +7,18 @@
     <title>@yield('PageTitle')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="{{asset('js/jquery-3.4.0.min.js')}}"></script>
-    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript" defer src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="{{asset('css/daterangepickerjquery.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/moment.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/daterangepicker.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/animate.js')}}"></script>
     <link type="text/css" rel="stylesheet" href="{{asset('css/daterangepicker.css')}}"/>
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link type="text/css" href="{{asset('css/style.css')}}" rel="stylesheet">
-    <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
+    <script type="text/javascript" defer src="{{asset('js/script.js')}}"></script>
 </head>
 <body>
 <div class="big-bg">
@@ -31,15 +32,14 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <?php use Illuminate\Support\Facades\Route; ?>
                     <a class="nav-link @if(Route::current()->getName() == 'rooms.index') active @endif"
                        href="{{route('rooms.index')}}">{{__('Our Rooms')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName() == 'aboutus') active @endif" href="">{{__('About us')}}</a>
+                    <a class="nav-link @if(Route::current()->getName() == 'page.about') active @endif" href="{{route('page.about')}}">{{__('About us')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName() == 'contact') active @endif" href="/contact">{{__('Contact')}}</a>
+                    <a class="nav-link @if(Route::current()->getName() == 'page.contact') active @endif" href="{{route('page.contact')}}">{{__('Contact')}}</a>
                 </li>
                 @guest
                     <li class="nav-item">

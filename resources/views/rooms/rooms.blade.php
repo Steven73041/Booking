@@ -27,7 +27,7 @@
         <div class="filtered-data">
             @if($rooms->count())
                 @foreach($rooms as $room)
-                    <div class="col-8 mx-auto border m-3">
+                    <div class="col-8 mx-auto border m-3 room_row">
                         <h2 class="text-center mt-1">{{$room->name}}</h2>
                         <div class="row">
                             <div class="col-md-3 p-3">

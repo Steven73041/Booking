@@ -55,4 +55,31 @@ $(function () {
         return false;
     });
 
+    /**
+     *
+     * @type Animations
+     */
+    let new_rooms_left = document.querySelectorAll('.new_rooms_div > div.card:first-child, .new_rooms_div > div.card:nth-child(2)');
+    let new_rooms_right = document.querySelectorAll('.new_rooms_div > div.card:nth-child(3) , .new_rooms_div > div.card:nth-child(4)');
+    let rooms_left = document.querySelectorAll('.room_row:nth-child(even)');
+    let rooms_right = document.querySelectorAll('.room_row:nth-child(odd)');
+
+    anime({
+        targets: [new_rooms_left, rooms_left],
+        easing: 'easeInOutSine',
+        direction: 'alternate',
+        translateX: -window.outerWidth/3,
+        duration: 1000
+    });
+    anime({
+        targets: [new_rooms_right, rooms_right],
+        easing: 'easeInOutSine',
+        direction: 'alternate',
+        translateX: +window.outerWidth/3,
+        duration: 1000
+    });
+    setTimeout(function(){
+        $('.new_rooms_div > div.card, .room_row:nth-child(odd), .room_row:nth-child(even)').fadeIn(1500);
+    },1000);
+
 });
