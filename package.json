@@ -10,13 +10,13 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "axios": "^0.18",
+        "axios": "^0.18.1",
         "bootstrap": "^4.0.0",
         "cross-env": "^5.1",
         "gulp": "^4.0.2",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
-        "lodash": "^4.17.5",
+        "lodash": "^4.17.15",
         "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
@@ -24,12 +24,20 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "browser-sync": "^2.26.7",
+        "del": "^5.1.0",
         "gulp-autoprefixer": "^7.0.1",
         "gulp-changed": "^4.0.2",
+        "gulp-clean-css": "^4.2.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-flatten": "^0.4.0",
         "gulp-if": "^3.0.0",
         "gulp-imagemin": "^6.2.0",
         "gulp-jshint": "^2.1.0",
         "gulp-sass": "^4.0.2",
-        "gulp-uglify": "^3.0.2"
+        "gulp-sourcemaps": "^2.6.5",
+        "gulp-svgmin": "^2.2.0",
+        "gulp-uglify": "^3.0.2",
+        "lazypipe": "^1.0.2"
     }
 }

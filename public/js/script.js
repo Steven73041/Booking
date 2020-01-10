@@ -52,14 +52,10 @@ $(function () {
         return false;
     });
 
-    /**
-     *
-     * @type Animations
-     */
-    let new_rooms_left = document.querySelectorAll('.new_rooms_div > div.card:first-child, .new_rooms_div > div.card:nth-child(2)');
-    let new_rooms_right = document.querySelectorAll('.new_rooms_div > div.card:nth-child(3) , .new_rooms_div > div.card:nth-child(4)');
-    let rooms_left = document.querySelectorAll('.room_row:nth-child(even)');
-    let rooms_right = document.querySelectorAll('.room_row:nth-child(odd)');
+    var new_rooms_left = document.querySelectorAll('.new_rooms_div > div.card:first-child, .new_rooms_div > div.card:nth-child(2)');
+    var new_rooms_right = document.querySelectorAll('.new_rooms_div > div.card:nth-child(3) , .new_rooms_div > div.card:nth-child(4)');
+    var rooms_left = document.querySelectorAll('.room_row:nth-child(even)');
+    var rooms_right = document.querySelectorAll('.room_row:nth-child(odd)');
 
     anime({
         targets: [new_rooms_left, rooms_left],

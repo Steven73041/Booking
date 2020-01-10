@@ -1,20 +1,20 @@
-var argv = require('minimist')(process.argv.slice(2));
-var {parallel, series, src, dest} = require('gulp');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var uglify = require('gulp-uglify');
-var changed = require('gulp-changed');
-var imagemin = require('gulp-imagemin');
-var jshint = require('gulp-jshint');
-var gulpif = require('gulp-if');
-var lazypipe = require('lazypipe');
-var cleanCSS  = require('gulp-clean-css');
-var browserSync = require('browser-sync').create();
-var concat = require('gulp-concat');
-var flatten = require('gulp-flatten');
-var svgmin = require('gulp-svgmin');
-var sourcemaps = require('gulp-sourcemaps');
-var del = require('del');
+let argv = require('minimist')(process.argv.slice(2));
+let {parallel, series, src, dest} = require('gulp');
+let sass = require('gulp-sass');
+let autoprefixer = require('gulp-autoprefixer');
+let uglify = require('gulp-uglify');
+let changed = require('gulp-changed');
+let imagemin = require('gulp-imagemin');
+// let jshint = require('gulp-jshint');
+let gulpif = require('gulp-if');
+let lazypipe = require('lazypipe');
+let cleanCSS  = require('gulp-clean-css');
+let browserSync = require('browser-sync').create();
+let concat = require('gulp-concat');
+let flatten = require('gulp-flatten');
+let svgmin = require('gulp-svgmin');
+let sourcemaps = require('gulp-sourcemaps');
+let del = require('del');
 
 const AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -35,8 +35,8 @@ const AUTOPREFIXER_BROWSERS_OLDER = [
 ];
 
 //Styles task
-function styles(){
-    return src('assets/sass/*.scss')
+async function styles(){
+    return src('resources/sass/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             overrideBrowserslist: AUTOPREFIXER_BROWSERS,
@@ -46,15 +46,15 @@ function styles(){
             outputStyle: 'compressed',
         }))
         .pipe(sourcemaps.write('.', {
-            sourceRoot: 'assets/sass/'
+            sourceRoot: 'public/css/'
         }))
-        .pipe(dest('./dist/css'),{ sourcemaps: '.' })
+        .pipe(dest('public/css/'),{ sourcemaps: '.' })
         .pipe(browserSync.stream());
 }
 
 //Image minify
-function imagemins(){
-    var imgSrc = 'assets/images/*.+(png|jpg|gif)',
+async function imagemins(){
+    let imgSrc = 'assets/images/*.+(png|jpg|gif)',
         imgDst = './dist/images';
     return src(imgSrc)
         .pipe(imagemin({
@@ -70,13 +70,13 @@ function imagemins(){
 }
 
 // `gulp clean` - Deletes the build folder entirely.
-function clean(cb){
+async function clean(cb){
     return del(['./dist'], cb);
 }
 
 // `gulp fonts` - Grabs all the fonts and outputs them in a flattened directory
 // structure. See: https://github.com/armed/gulp-flatten
-function fonts() {
+async function fonts() {
     return src('assets/fonts/*')
         .pipe(flatten())
         .pipe(dest('./dist/fonts'))
@@ -84,25 +84,29 @@ function fonts() {
 };
 
 //My libraries
-var JAVASCRIPT_LIBRARIES = [
-    'assets/js/bootstrap3.7.min.js',
-    'assets/js/script.js'
+let JAVASCRIPT_LIBRARIES = [
+    'public/js/jquery-3.4.0.min.js',
+    'public/js/moment.min.js',
+    'public/js/bootstrap.min.js',
+    'public/js/daterangepicker.min.js',
+    'public/js/daterangepickerjquery.js',
+    'public/js/animate.js',
+    'public/js/script.js',
 ];
-function scripts(){
+async function scripts(){
     return src(JAVASCRIPT_LIBRARIES)
         .pipe(concat('main.js'))
         .pipe(uglify())
-        .pipe(dest('./dist/js'))
+        .pipe(dest('./public/js/'))
         .pipe(browserSync.stream());
 }
 
 // ### Gulp
 // `gulp` - Run a complete build. To compile for production run `gulp --production`.
-
-exports.fonts = fonts;
-exports.imagemins = imagemins;
+// exports.fonts = fonts;
+// exports.imagemins = imagemins;
 exports.scripts = scripts;
 exports.styles = styles;
-exports.clean = clean;
-exports.build = series(styles, scripts, imagemins, fonts);
-exports.default = series(clean, parallel(styles, scripts, imagemins, fonts));
+// exports.clean = clean;
+// exports.build = series(styles, scripts, imagemins, fonts);
+// exports.default = series(clean, parallel(styles, scripts, imagemins, fonts));
