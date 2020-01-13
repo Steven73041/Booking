@@ -220,30 +220,29 @@
                 <h2 class="text-center text-info">{{__('There are no Reviews')}}</h2>
             @endif
             @auth
-                <form method="POST" action="{{route('reviews.store')}}" class="needs-validation" novalidate
-                      id="review_form">
+                <form method="POST" action="{{route('reviews.store')}}" class="needs-validation" novalidate id="review_form">
                     @csrf
                     <input type="hidden" name="room_id" value="{{$room->id}}"/>
                     <div class="form-row text-center">
                         <label for="rating" class="col-12">{{__('Rate')}}</label>
                         <input type="number" min="1" max="5" required name="rate"
-                               placeholder="{{$errors->has('rate')?$errors->first('rate'):''}}" value="{{old('rate')}}"
-                               class="mx-auto form-control col-md-1 col-sm-2 col-lg-1 {{$errors->has('rate')?'border border-danger':''}}"/>
+                               placeholder="{{$errors->reviews->has('rate')?$errors->reviews->first('rate'):''}}" value="{{old('rate')}}"
+                               class="mx-auto form-control col-md-1 col-sm-2 col-lg-1 {{$errors->reviews->has('rate')?'border border-danger':''}}"/>
                     </div>
                     <div class="form-row text-center">
                         <label for="review" class="col-12">{{__('Review')}}</label>
                         <textarea name="review" cols="40" rows="5" from="review_form" required
-                                  class="mx-auto form-control col-md-6 form-control-md {{$errors->has('review')?'border border-danger':''}}"
-                                  placeholder="{{$errors->has('review')?$errors->first('review'):''}}"></textarea>
+                                  class="mx-auto form-control col-md-6 form-control-md {{$errors->reviews->has('review')?'border border-danger':''}}"
+                                  placeholder="{{$errors->reviews->first('review')?$errors->reviews->first('review'):''}}"></textarea>
                     </div>
                     <div class="form-row text-center">
                         <input type="submit" name="submit" value="Submit"
                                class="mx-auto btn btn-primary m-1 mx-auto px-5"/>
                     </div>
-                    @if ($errors->reviews)
+                    @if ($errors->reviews->first())
                         <div class="alert alert-danger">
                             <ul>
-                                @foreach ($errors->all() as $error)
+                                @foreach ($errors->reviews->all() as $error)
                                     <li>{{$error}}</li>
                                 @endforeach
                             </ul>
@@ -251,8 +250,7 @@
                     @endif
                 </form>
             @else
-                <h3 class="text-center">{{__('You must ')}}<a
-                        href="{{route('login')}}">{{__('Login')}}</a>{{__(' to write a review')}}</h3>
+                <h3 class="text-center">{{__('You must ')}}<a href="{{route('login')}}">{{__('Login')}}</a>{{__(' to write a review')}}</h3>
             @endauth
         </div>
     </div><!--row-->

@@ -85,9 +85,10 @@ async function fonts() {
 
 //My libraries
 let JAVASCRIPT_LIBRARIES = [
-    'public/js/jquery-3.4.0.min.js',
-    'public/js/moment.min.js',
+    'public/js/jquery3-4-1.min.js',
+    'public/js/popper.min.js',
     'public/js/bootstrap.min.js',
+    'public/js/moment.min.js',
     'public/js/daterangepicker.min.js',
     'public/js/daterangepickerjquery.js',
     'public/js/animate.js',
