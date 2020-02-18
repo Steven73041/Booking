@@ -36,7 +36,7 @@ const AUTOPREFIXER_BROWSERS_OLDER = [
 
 //Styles task
 async function styles(){
-    return src('resources/sass/*.scss')
+    return src('resources/sass/style.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             overrideBrowserslist: AUTOPREFIXER_BROWSERS,
@@ -48,7 +48,7 @@ async function styles(){
         .pipe(sourcemaps.write('.', {
             sourceRoot: 'public/css/'
         }))
-        .pipe(dest('public/css/'),{ sourcemaps: '.' })
+        .pipe(dest('public/dist/'),{ sourcemaps: '.' })
         .pipe(browserSync.stream());
 }
 
@@ -85,9 +85,10 @@ async function fonts() {
 
 //My libraries
 let JAVASCRIPT_LIBRARIES = [
-    'public/js/jquery-3.4.0.min.js',
-    'public/js/moment.min.js',
+    'public/js/jquery3-4-1.min.js',
+    'public/js/popper.min.js',
     'public/js/bootstrap.min.js',
+    'public/js/moment.min.js',
     'public/js/daterangepicker.min.js',
     'public/js/daterangepickerjquery.js',
     'public/js/animate.js',
@@ -97,7 +98,7 @@ async function scripts(){
     return src(JAVASCRIPT_LIBRARIES)
         .pipe(concat('main.js'))
         .pipe(uglify())
-        .pipe(dest('./public/js/'))
+        .pipe(dest('./public/dist/'))
         .pipe(browserSync.stream());
 }
 

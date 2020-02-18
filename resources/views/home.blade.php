@@ -1,14 +1,15 @@
 @extends('home-layout')
 @section('PageTitle', 'Home')
+@section('bg-class', 'Home')
 <!-- form -->
 @section('content')
     <div class="container col-md-4 mx-auto rounded">
-        <form method="POST" class="needs-validation" novalidate action="{{route('rooms.form')}}">
+        <form method="POST" class="needs-validation" novalidate="" action="{{route('rooms.form')}}">
             <div class="form-row">
                 <div class="col-md-6 mb-4">
                     @csrf
                     <select name="city_id" class="form-control form-control-md" aria-describedby="city" placeholder="Choose City" required>
-                        <option disabled selected>{{__('Choose City')}}</option>
+                        <option value="" disabled selected>{{__('Choose City')}}</option>
                         @foreach($cities as $city)
                             <option value="{{$city->id}}">{{$city->name}}</option>
                         @endforeach
@@ -16,8 +17,7 @@
                     <div class="invalid-feedback">{{__('Please provide a valid city.')}}</div>
                 </div>
                 <div class="col-md-6 mb-4">
-                    <select name="room_type" class="form-control form-control-md" aria-describedby="room_type"
-                            placeholder="Choose Room type" required>
+                    <select name="room_type" class="form-control form-control-md" aria-describedby="room_type" placeholder="Choose Room type" required>
                         <option value="" disabled selected>{{__('Room Type')}}</option>
                         @foreach($room_types as $room_type)
                             <option value="{{$room_type->id}}">{{$room_type->name}}</option>
@@ -37,7 +37,7 @@
         </form>
     </div>
     <!-- our newest rooms! -->
-    <div clas="row"><h1 class="text-center my-2">{{__('Our Newest Rooms!')}}</h1></div>
+    <h1 class="text-center my-2">{{__('Our Newest Rooms!')}}</h1>
     <!-- Cards -->
     <div class="row new_rooms_div">
         @foreach($newrooms as $newroom)

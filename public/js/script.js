@@ -1,9 +1,11 @@
-(function () {
+$(function () {
     'use strict';
-    window.addEventListener('load', function () {
+    window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation');
-        var validation = Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
@@ -12,8 +14,7 @@
             }, false);
         });
     }, false);
-})();
-$(function () {
+
     $('div>input[name="datetimes"]').daterangepicker({
         timePicker: true,
         minDate: new Date(),
@@ -56,7 +57,6 @@ $(function () {
     var new_rooms_right = document.querySelectorAll('.new_rooms_div > div.card:nth-child(3) , .new_rooms_div > div.card:nth-child(4)');
     var rooms_left = document.querySelectorAll('.room_row:nth-child(even)');
     var rooms_right = document.querySelectorAll('.room_row:nth-child(odd)');
-
     anime({
         targets: [new_rooms_left, rooms_left],
         easing: 'easeInOutSine',
@@ -75,5 +75,4 @@ $(function () {
     setTimeout(function(){
         $('.new_rooms_div > div.card, .room_row:nth-child(odd), .room_row:nth-child(even)').fadeIn(1500);
     },1000);
-
 });
