@@ -36,15 +36,15 @@ class User extends Authenticatable {
         'email_verified_at' => 'datetime',
     ];
 
-    public function photos(){
+    public function photos() {
         return $this->hasMany(Photos::class);
     }
 
-    public function reviews(){
+    public function reviews() {
         return $this->hasMany(Reviews::class);
     }
 
-    public function rooms(){
+    public function rooms() {
         return $this->hasMany(Rooms::class);
     }
 
@@ -55,7 +55,8 @@ class User extends Authenticatable {
     public function favorites() {
         return $this->hasMany(Favorites::class);
     }
-    public function owns($room){
+
+    public function owns($room) {
         return auth()->user()->id == $room->user_id;
     }
 }

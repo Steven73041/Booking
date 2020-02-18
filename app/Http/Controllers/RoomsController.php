@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Filesystem\Filesystem;
+use Intervention\Image\Facades\Image;
 
 class RoomsController extends Controller {
     /**
@@ -122,6 +123,8 @@ class RoomsController extends Controller {
                         . '-' . Auth::user()->id . '-' . rand(15, 88888);
                     $fileName = $fileName . '.' . $extension;
                     $path = $photo->storeAs('/' . Auth::user()->id, $fileName, 'images');
+                    $image = Image::make(public_path("images/".$path))->fit(450, 300);
+                    $image->save(public_path("/images/".$path), 60);
                     Photos::create([
                         'src' => '../images/' . $path,
                         'room_id' => $room->id,
@@ -129,7 +132,7 @@ class RoomsController extends Controller {
                     ]);
                 }
             }
-            return redirect(route('rooms.show', $room->id));
+            return redirect(route('rooms.slug', $room->slug));
         }else{
             return back();
         }
@@ -159,11 +162,10 @@ class RoomsController extends Controller {
             'name' => 'max:25|min:2',
             'city_id' => 'max:50|min:1',
             'area' => 'max:50|min:2',
-            'photo' => 'image|max:45',
             'photo' => 'max:450',
-            'photo.*' => 'mimes:jpg,png,gif,jpeg',
+//            'photo.*' => 'mimes:jpg,png,gif,jpeg',
         ], $errors = [
-            'photo.*' => 'Only images allowed',
+//            'photo.*' => 'Only images allowed',
             'photo.max' => 'Image size maximum 45KB',
         ]);
         if ($validator->fails()) {
@@ -198,6 +200,8 @@ class RoomsController extends Controller {
                 $fileName = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME) . '-' . Auth::user()->id . '-' . rand(15, 88888);
                 $fileName = $fileName . '.' . $extension;
                 $path = $photo->storeAs('/' . Auth::user()->id, $fileName, 'images');
+                $image = Image::make(public_path("images/".$path))->fit(450, 300);
+                $image->save(public_path("/images/".$path), 60);
                 Photos::create([
                     'src' => '../images/' . $path,
                     'room_id' => $room->id,

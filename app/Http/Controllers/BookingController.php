@@ -33,14 +33,13 @@ class BookingController extends Controller {
      * @print_r boolean
      */
     public function store(Request $request) {
-        $id = Auth::user()->id;
         $check_in = $request->session()->pull('check_in', 'default');
         $check_out = $request->session()->pull('check_out', 'default');
         $room_id = $request->session()->pull('room_id', 'default');
         $booking = Booking::create([
             'check_in_date' => $check_in,
             'check_out_date' => $check_out,
-            'user_id' => $id,
+            'user_id' => auth()->user()->id,
             'room_id' => $room_id
         ]);
         if ($booking) {
@@ -53,11 +52,10 @@ class BookingController extends Controller {
 
     public function stripePay(Request $request) {
         $value = $request->session()->pull('total_price', 'default');
-        $user = User::find(auth()->user()->id);
-        $user->createAsStripeCustomer();
+        auth()->user()->createAsStripeCustomer();
         $paymentMethod = $request->payment_method;
         try {
-            $payment = $user->charge($value * 100, $paymentMethod);
+            $payment = auth()->user()->charge($value * 100, $paymentMethod);
             print_r(json_encode($payment->charges->data[0]));
         } catch (IncompletePayment $exception) {
             $room_id = $request->session()->get('room_id');

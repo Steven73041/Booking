@@ -105,7 +105,6 @@
                                 data: data,
                                 success: function (data) {
                                     const array = JSON.parse(data);
-                                    console.log(array);
                                     function unavailable(date) {
                                         let dmy = date.toISOString().split('T')[0];
                                         if ($.inArray(dmy, array) < 0) {
@@ -154,8 +153,7 @@
                         <hr>
                         <input type="submit" name="submit" class="btn btn-primary mb-1 mx-auto px-5" value="Book">
                         @can('edit', $room)
-                            <button type="button" class="btn btn-outline-primary mb-1 mx-auto" value="Edit" href="#"
-                                    onclick="window.location.href=('{{route('rooms.edit', $room->slug)}}')">{{__('Edit Room')}}</button>
+                            <a type="button" class="btn btn-outline-primary mb-1 mx-auto" href="{{route('rooms.edit', $room->slug)}}">{{__('Edit Room')}}</a>
                         @endcan
                     </form>
                 @endif
@@ -227,29 +225,28 @@
                     <div class="form-row text-center">
                         <label for="rating" class="col-12">{{__('Rate')}}</label>
                         <input type="number" min="1" max="5" required name="rate"
-                               placeholder="{{$errors->has('rate')?$errors->first('rate'):''}}" value="{{old('rate')}}"
-                               class="mx-auto form-control col-md-1 col-sm-2 col-lg-1 {{$errors->has('rate')?'border border-danger':''}}"/>
+                               placeholder="{{$errors->reviews->first('rate')?$errors->reviews->first('rate'):''}}" value="{{old('rate')}}"
+                               class="mx-auto form-control col-md-1 col-sm-2 col-lg-1 {{$errors->first('rate')?'border border-danger':''}}"/>
                     </div>
                     <div class="form-row text-center">
                         <label for="review" class="col-12">{{__('Review')}}</label>
                         <textarea name="review" cols="40" rows="5" from="review_form" required
-                                  class="mx-auto form-control col-md-6 form-control-md {{$errors->has('review')?'border border-danger':''}}"
-                                  placeholder="{{$errors->has('review')?$errors->first('review'):''}}"></textarea>
+                                  class="mx-auto form-control col-md-6 form-control-md {{$errors->reviews->first('review')?'border border-danger':''}}"
+                                  placeholder="{{$errors->reviews->first('review')?$errors->reviews->first('review'):''}}">{{old('review')}}</textarea>
                     </div>
                     <div class="form-row text-center">
-                        <input type="submit" name="submit" value="Submit"
-                               class="mx-auto btn btn-primary m-1 mx-auto px-5"/>
+                        <input type="submit" name="submit" value="Submit" class="mx-auto btn btn-primary m-1 mx-auto px-5"/>
                     </div>
-                    @if ($errors->reviews)
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{$error}}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                 </form>
+                @if (count($errors->reviews) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->reviews->all() as $message)
+                                <li>{{$message}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             @else
                 <h3 class="text-center">{{__('You must ')}}<a
                         href="{{route('login')}}">{{__('Login')}}</a>{{__(' to write a review')}}</h3>

@@ -6,22 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('PageTitle')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-{{--    <script type="text/javascript" src="{{asset('js/jquery-3.4.0.min.js')}}"></script>--}}
-    <script type="text/javascript" defer src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="{{asset('css/daterangepickerjquery.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-{{--        <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>--}}
-{{--        <script type="text/javascript" src="{{asset('js/moment.min.js')}}"></script>--}}
-{{--        <script type="text/javascript" src="{{asset('js/daterangepicker.min.js')}}"></script>--}}
-    {{--    <script type="text/javascript" src="{{asset('js/animate.js')}}"></script>--}}
     <link type="text/css" rel="stylesheet" href="{{asset('css/daterangepicker.css')}}"/>
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link type="text/css" href="{{asset('css/style.css')}}" rel="stylesheet">
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
-
-    {{--    <script type="text/javascript" defer src="{{asset('js/script.js')}}"></script>--}}
-
 </head>
 <body>
 <div class="big-bg @yield('bg-class')">

@@ -434,7 +434,7 @@
                 </div>
                 <div class="sr-field-error" id="card-errors" role="alert"></div>
                 <button id="submit">
-                    <span id="button-text">Pay</span><span id="order-amount"></span>
+                    <span id="button-text">{{__('Pay')}}</span><span id="order-amount"></span>
                 </button>
                 <div class="spinner hidden" id="spinner"></div>
             </form>
@@ -442,7 +442,7 @@
 
             </div>
             <div class="sr-result hidden">
-                <p>Payment completed</p>
+                <p>{{__('Payment completed')}}</p>
                 <pre>
           </pre>
             </div>

@@ -8,7 +8,7 @@ class RoomTypes extends Model {
 
     protected $guarded = [];
 
-    function rooms(){
+    public function rooms(){
         return $this->hasMany(Rooms::class, 'room_type', 'id');
     }
 

@@ -9,23 +9,6 @@ use Illuminate\Support\Facades\Validator;
 use App\User;
 
 class ReviewsController extends Controller{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index() {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(){
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -41,10 +24,10 @@ class ReviewsController extends Controller{
                 'rate' => 'required|max:1|min:1|regex:/^[0-5]+$/',
                 'review' => 'required|max:150|min:10'
             ],$errors = [
-                'review.required' => 'Please enter a valid Review',
+                'review.required' => 'Please enter a Review',
                 'rate.regex' => 'Only numbers allowed for Rating',
-                'review.min' => 'Minimum 10 characters',
-                'review.max' => 'Maximum 150 characters'
+                'review.min' => 'Review minimum 10 characters',
+                'review.max' => 'Review maximum 150 characters'
             ]);
             if ($validator->fails()) {
                 return back()->withErrors($validator, 'reviews')->withInput();
@@ -57,26 +40,6 @@ class ReviewsController extends Controller{
             ]);
             return back();
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Reviews  $reviews
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Reviews $reviews){
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Reviews  $reviews
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Reviews $reviews){
-        //
     }
 
     /**

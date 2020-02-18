@@ -21,7 +21,7 @@
                 @endif
                 <div class="card-header text-center">{{__('Edit Room')}}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('rooms.update',$room->id)}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('rooms.update', $room->slug)}}" enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
                         <div class="form-row">

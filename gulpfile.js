@@ -81,7 +81,7 @@ async function fonts() {
         .pipe(flatten())
         .pipe(dest('./dist/fonts'))
         .pipe(browserSync.stream());
-};
+}
 
 //My libraries
 let JAVASCRIPT_LIBRARIES = [

@@ -35,6 +35,7 @@ body {
 }
 
 .big-bg {
+    background: linear-gradient(45deg, #ccc, transparent);
     min-height: 100vh;
 }
 

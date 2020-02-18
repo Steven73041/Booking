@@ -24,7 +24,7 @@ $(function () {
         },
     });
     $('.hide-show').show();
-    $('.hide-show span').addClass('show')
+    $('.hide-show span').addClass('show');
     $('.hide-show span').click(function () {
         if ($(this).hasClass('show')) {
             $(this).text('Hide');
