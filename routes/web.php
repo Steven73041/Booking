@@ -19,7 +19,7 @@ Route::get('/callbackGoogle', 'SocialAuthGoogleController@callback');
 /*
  * GET Routes
  */
-Route::get('rooms/{room}', 'RoomsController@slug')->name('rooms.slug');
+Route::get('rooms/{slug}', 'RoomsController@slug')->name('rooms.slug');
 Route::get('/', 'PageController@home')->name('home'); //PageController function home
 Route::get('/my-rooms', 'RoomsController@myRooms')->middleware('auth')->name('rooms.myRooms');
 Route::get('/contact', 'PageController@showContact')->name('page.contact');
