@@ -8,7 +8,8 @@
             <div class="form-row">
                 <div class="col-md-6 mb-4">
                     @csrf
-                    <select name="city_id" class="form-control form-control-md" aria-describedby="city" placeholder="Choose City" required>
+                    <select name="city_id" class="form-control form-control-md" aria-describedby="city"
+                            placeholder="Choose City" required>
                         <option value="" disabled selected>{{__('Choose City')}}</option>
                         @foreach($cities as $city)
                             <option value="{{$city->id}}">{{$city->name}}</option>
@@ -17,7 +18,8 @@
                     <div class="invalid-feedback">{{__('Please provide a valid city.')}}</div>
                 </div>
                 <div class="col-md-6 mb-4">
-                    <select name="room_type" class="form-control form-control-md" aria-describedby="room_type" placeholder="Choose Room type" required>
+                    <select name="room_type" class="form-control form-control-md" aria-describedby="room_type"
+                            placeholder="Choose Room type" required>
                         <option value="" disabled selected>{{__('Room Type')}}</option>
                         @foreach($room_types as $room_type)
                             <option value="{{$room_type->id}}">{{$room_type->name}}</option>
@@ -43,7 +45,9 @@
         @foreach($newrooms as $newroom)
             <div class="card mx-auto col-md-2">
                 <div class="text-center">
-                    <img class="card-img-top mx-auto mt-3" src="{{$newroom->photos[0]->src??''}}" alt="{{$newroom->name}}"/>
+                    @if($newroom->photos[0]->src)
+                        <img class="card-img-top mx-auto mt-3" src="{{get_image_path($newroom->photos[0]->src)?:''}}" alt="{{$newroom->name}}"/>
+                    @endif
                 </div>
                 <div class="card-body p-1 text-center">
                     <h5 class="card-title p-0 m-0">{{$newroom->name}}</h5>
@@ -53,7 +57,8 @@
                     <li class="list-group-item">{{__('Price: ').$newroom->price}}€</li>
                     <li class="list-group-item">{{__('Room type: ').$newroom->type->name}}</li>
                     <li class="list-group-item">
-                        <a href="{{route('rooms.slug', $newroom->slug)}}" class="btn btn-outline-info">{{__('View Room')}}</a>
+                        <a href="{{route('rooms.show', $newroom->slug)}}"
+                           class="btn btn-outline-info">{{__('View Room')}}</a>
                     </li>
                 </ul>
             </div>

@@ -63,7 +63,7 @@ class BookingController extends Controller {
             print_r(json_encode([
                 'url' => route('cashier.payment',
                     [$exception->payment->id,
-                        'redirect' => route('rooms.slug', $room->slug)
+                        'redirect' => route('rooms.show', $room->slug)
                     ])
             ]));
         }

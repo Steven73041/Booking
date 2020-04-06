@@ -4,9 +4,11 @@
             <h2 class="text-center mt-1">{{$room->name}}</h2>
             <div class="row">
                 <div class="col-md-3 p-3">
-                    <img class="col-md p-0" src="{{$room->photos[0]->src ?? ''}}" alt="{{$room->name}}">
+                    @if($room->photos[0]->src)
+                    <img class="col-md p-0" src="{{get_image_path($room->photos[0]->src) ?? ''}}" alt="{{$room->name}}">
+                    @endif
                     <p class="mt-4">{{__('Price: ').$room->price.__('€ Per night')}}</p>
-                    <a href="{{route('rooms.slug', $room->slug)}}" class="btn btn-outline-info mx-5 mb-3">{{__('View Room')}}</a>
+                    <a href="{{route('rooms.show', $room->slug)}}" class="btn btn-outline-info mx-5 mb-3">{{__('View Room')}}</a>
                 </div>
                 <div class="col-md-6">
                     <small>{{__('City: ').$room->city->name}}, {{$room->area}}</small>
@@ -20,7 +22,8 @@
                     <p>{{__('Wifi: ').$room->wifi}}</p>
                     <hr>
                     <p>{{__('Pet Friendly: ').$room->pet_friendly}}</p>
-                    <hr>@if(isset($room->lat_location) && isset($room->lng_location))
+                    <hr>
+                    @if(isset($room->lat_location) && isset($room->lng_location))
                         <a href="https://www.google.com/maps/place/{{$room->lat_location}},{{$room->lng_location}}"
                            target="_blank">{{__('View location in map')}}</a>@endif
                 </div>

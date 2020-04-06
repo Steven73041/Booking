@@ -32,9 +32,11 @@
                         <h2 class="text-center mt-1">{{$room->name}}</h2>
                         <div class="row">
                             <div class="col-md-3 p-3">
-                                <img class="col-md p-0" src="{{$room->photos[0]->src ?? ''}}" alt="{{$room->name}}">
+                                @if($room->photos[0]->src)
+                                <img class="col-md p-0" src="{{get_image_path($room->photos[0]->src) ?? ''}}" alt="{{$room->name}}">
+                                @endif
                                 <p class="mt-4">{{__('Price: ').$room->price.__('€ Per night')}}</p>
-                                <a href="{{route('rooms.slug', $room->slug)}}"
+                                <a href="{{route('rooms.show', $room->slug)}}"
                                    class="btn btn-outline-info mx-5 mb-3">{{__('View Room')}}</a>
                             </div>
                             <div class="col-md-6">

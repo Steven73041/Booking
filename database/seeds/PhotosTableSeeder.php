@@ -18,7 +18,7 @@ class PhotosTableSeeder extends Seeder {
             for($i = 0; $i < 3; $i++){
                 Photos::create([
                 'room_id' => $faker->randomElement($room_ids),
-                'src' => '../images/room-'.rand(1, 10).'.jpg',
+                'src' => 'images/room-'.rand(1, 10).'.jpg',
                     ]);
                 }
             }
