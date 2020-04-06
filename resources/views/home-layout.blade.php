@@ -7,13 +7,13 @@
     <title>@yield('PageTitle')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
-    <link rel="stylesheet" href="{{asset('css/daterangepickerjquery.min.css')}}">
-    <link type="text/css" rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link type="text/css" rel="stylesheet" href="{{asset('css/daterangepicker.css')}}"/>
+    <link rel="stylesheet" href="{{url('/css/daterangepickerjquery.min.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url('/css/bootstrap.min.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url('/css/daterangepicker.css')}}"/>
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link type="text/css" href="{{asset('css/style.css')}}" rel="stylesheet">
-    <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+    <link type="text/css" href="{{url('/css/style.css')}}" rel="stylesheet">
+    <script type="text/javascript" src="{{url('/js/main.js')}}"></script>
 </head>
 <body>
 <div class="big-bg @yield('bg-class')">

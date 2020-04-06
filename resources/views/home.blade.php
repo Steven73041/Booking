@@ -45,8 +45,8 @@
         @foreach($newrooms as $newroom)
             <div class="card mx-auto col-md-2">
                 <div class="text-center">
-                    @if($newroom->photos[0]->src)
-                        <img class="card-img-top mx-auto mt-3" src="{{get_image_path($newroom->photos[0]->src)?:''}}" alt="{{$newroom->name}}"/>
+                    @if(count($newroom->photos))
+                        <img class="card-img-top mx-auto mt-3" src="{{get_image_path($newroom->photos[0]->src)}}" alt="{{$newroom->name}}"/>
                     @endif
                 </div>
                 <div class="card-body p-1 text-center">
