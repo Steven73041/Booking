@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-3 p-3">
                     @if($room->photos[0]->src)
-                    <img class="col-md p-0" src="{{get_image_path($room->photos[0]->src) ?? ''}}" alt="{{$room->name}}">
+                    <img class="col-md p-0" src="{{asset($room->photos[0]->src) ?? ''}}" alt="{{$room->name}}">
                     @endif
                     <p class="mt-4">{{__('Price: ').$room->price.__('€ Per night')}}</p>
                     <a href="{{route('rooms.show', $room->slug)}}" class="btn btn-outline-info mx-5 mb-3">{{__('View Room')}}</a>

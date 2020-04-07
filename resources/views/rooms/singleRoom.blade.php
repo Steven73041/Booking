@@ -23,7 +23,7 @@
                         @php $i = 0 @endphp
                         @foreach($room->photos as $photo)
                             <div class="carousel-item @if($i === 0) active @endif">
-                                <img class="d-block w-100" src="{{get_image_path($photo->src)}}" alt="{{$room->name}}"/>
+                                <img class="d-block w-100" src="{{asset($photo->src)}}" alt="{{$room->name}}"/>
                             </div>
                             @php $i++ @endphp
                         @endforeach
@@ -44,7 +44,7 @@
                         @foreach($room->photos as $photo)
                             <li data-target="#carousel-thumb" data-slide-to="{{$i}}"
                                 class="@if($i === 0) active @endif">
-                                <img class="d-block w-100" src="{{get_image_path($photo->src)}}" class="img-fluid">
+                                <img class="d-block w-100" src="{{asset($photo->src)}}" class="img-fluid">
                             </li>
                             @php $i++ @endphp
                         @endforeach
