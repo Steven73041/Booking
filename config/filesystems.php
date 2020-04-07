@@ -58,7 +58,7 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/public'),
 	        //url changed from '/storage' to '/storage/app/public/
-            'url' => env('APP_URL').'storage/app/public/',
+            'url' => env('APP_URL').'/storage/app/public/',
             'visibility' => 'public',
         ],
 
