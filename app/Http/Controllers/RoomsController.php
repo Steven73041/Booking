@@ -123,7 +123,6 @@ class RoomsController extends Controller {
 						. '-' . Auth::user()->id . '-' . rand(15, 88888);
 					$fileName = $fileName . '.' . $extension;
 					$path = $photo->storeAs('images/' . auth()->id(), $fileName);
-					dd($path);
 					$storagePath = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
 					$image = Image::make($storagePath . $path)->fit(450, 300);
 					$image->save($storagePath . $path, 60);
