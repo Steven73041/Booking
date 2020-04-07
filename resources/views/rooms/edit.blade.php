@@ -111,7 +111,7 @@
                             </div>
                         </div>
                     </form>
-                    <form method="POST" action="{{route('rooms.destroy', $room->id)}}">
+                    <form method="POST" action="{{route('rooms.destroy', $room->slug)}}">
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="btn btn-danger" name="submit" value="Delete"
