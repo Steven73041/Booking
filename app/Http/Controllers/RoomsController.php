@@ -285,7 +285,8 @@ class RoomsController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 
-	public function destroy(Rooms $room) {
+	public function destroy($slug) {
+		$room = Rooms::findBySlug($slug);
 		$this->authorize('edit', $room);
 		$path_to_delete = public_path('images/' . Auth::user()->id);
 		$file = new Filesystem;
