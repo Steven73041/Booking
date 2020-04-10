@@ -36,6 +36,9 @@
                 <li class="nav-item">
                     <a class="nav-link @if(Route::current()->getName() == 'page.contact') active @endif" href="{{route('page.contact')}}">{{__('Contact')}}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link @if(Route::current()->getName() == 'page.read-me') active @endif" href="{{route('page.read-me')}}">{{__('Read Me')}}</a>
+                </li>
                 @guest
                     <li class="nav-item">
                         <a class="nav-link @if(Route::current()->getName() == 'login') active @endif" href="{{route('login')}}">{{__('Login')}}</a>

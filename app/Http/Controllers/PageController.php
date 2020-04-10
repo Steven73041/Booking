@@ -14,7 +14,6 @@ class PageController extends Controller {
         $cities = City::all();
         $room_types = RoomTypes::all();
         $newrooms = Rooms::orderBy('updated_at', 'desc')->take(4)->get();
-
         return view('home', [
             'cities' => $cities,
             'room_types' => $room_types,
@@ -24,13 +23,13 @@ class PageController extends Controller {
     }
 
 	public function showAbout() {
-		return view('about-us', [
+		return view('pages.about-us', [
 			'title' => 'About Us',
 		]);
 	}
 
     public function showContact() {
-        return view('contact', [
+        return view('pages.contact', [
             'title' => 'Contact',
         ]);
     }
@@ -40,4 +39,10 @@ class PageController extends Controller {
             'title' => 'Login',
         ]);
     }
+
+	public function showReadMe() {
+		return view('pages.read-me', [
+			'title' => 'Read Me',
+		]);
+	}
 }

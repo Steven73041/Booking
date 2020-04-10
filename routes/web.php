@@ -23,7 +23,7 @@ Route::get('/', 'PageController@home')->name('home'); //PageController function 
 Route::get('/my-rooms', 'RoomsController@myRooms')->middleware('auth')->name('rooms.myRooms');
 Route::get('/contact', 'PageController@showContact')->name('page.contact');
 Route::get('/about', 'PageController@showAbout')->name('page.about');
-
+Route::get('/read-me', 'PageController@showReadMe')->name('page.read-me');
 /*
  * RESOURCE Routes
  */
