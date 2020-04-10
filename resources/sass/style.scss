@@ -127,19 +127,27 @@ span.sort_price {
   }
 
   .scrollToTop {
-    width: 70px;
-    height: 70px;
-    padding: 10px;
+    width: 45px;
+    height: 45px;
     text-align: center;
-    font-weight: bold;
-    color: #444;
+    color: #000;
+    z-index: 350;
+    font-size: 0;
+    border: 1px solid #000;
+    border-radius: 50%;
     text-decoration: none;
+    background-color: #fff;
     position: fixed;
-    bottom: 50px;
-    right: 15px;
-    display: none;
-    background: url(../images/scroll-top.png) no-repeat;
-    background-size: 70px 70px;
+    bottom: 75px;
+    right: 40px;
+    visibility: hidden;
+    opacity: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transition: .2s all ease;
+    -webkit-transition: .2s all ease;
   }
 
   .d-flex.pagination-links > nav {
