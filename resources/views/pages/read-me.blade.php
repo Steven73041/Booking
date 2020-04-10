@@ -20,7 +20,7 @@
                     <li>{{__('Success: ')}}<code>4242 4242 4242 4242</code></li>
                 </ul>
                 <h2>{{__('Credits')}}</h2>
-                <p>{{__('Made by <strong>Anastasis Mastoris</strong> using jQuery, SASS and every single feature of Laravel 7.x')}}</p>
+                <p>{{__('Made by ')}}<strong>{{get_author()}}</strong>{{__('using jQuery, SASS and every single feature of Laravel 7.x')}}</p>
             </div>
         </div>
     </div>
