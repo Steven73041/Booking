@@ -13,7 +13,7 @@
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link type="text/css" href="{{url('/dist/style.css')}}" rel="stylesheet">
-    <script type="text/javascript" src="{{url('/js/jquery3-4-1.js')}}"></script>
+    <script type="text/javascript" src="{{url('/js/jquery3-4-1.min.js')}}"></script>
     <script type="text/javascript" src="{{url('/js/main.js')}}" defer></script>
 </head>
 <body>
