@@ -121,11 +121,23 @@ class RoomsController extends Controller {
 					$extension = $photo->getClientOriginalExtension();
 					$fileName = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME)
 						. '-' . Auth::user()->id . '-' . rand(15, 88888);
-					$fileName = $fileName . '.' . $extension;
-					$path = $photo->storeAs('images/' . auth()->id(), $fileName);
+					$fileName_def = $fileName . '.' . $extension;
+					$filename_232x132 = $fileName . '_232x132.' . $extension;
+					$filename_500x350 = $fileName . '_500x350.' . $extension;
+
+					$path = $photo->storeAs('images/' . auth()->id(), $fileName_def);
+					$path_232x132 = $photo->storeAs('images/' . auth()->id(), $filename_232x132);
+					$path_500x350 = $photo->storeAs('images/' . auth()->id(), $filename_500x350);
+
 					$storagePath = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
+
 					$image = Image::make($storagePath . $path)->fit(450, 300);
+					$image_232x132 = Image::make($storagePath . $path_232x132)->fit(232, 132);
+					$image_500x350 = Image::make($storagePath . $path_500x350)->fit(500, 350);
+
 					$image->save($storagePath . $path, 60);
+					$image_232x132->save($storagePath.$path_232x132, 60);
+					$image_500x350->save($storagePath.$path_500x350, 60);
 					Photos::create([
 						'src' => $path,
 						'room_id' => $room->id,
@@ -202,11 +214,23 @@ class RoomsController extends Controller {
 				$extension = $photo->getClientOriginalExtension();
 				$fileName = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME)
 					. '-' . Auth::user()->id . '-' . rand(15, 88888);
-				$fileName = $fileName . '.' . $extension;
-				$path = $photo->storeAs('images/' . auth()->id(), $fileName);
+				$fileName_def = $fileName . '.' . $extension;
+				$filename_232x132 = $fileName . '_232x132.' . $extension;
+				$filename_500x350 = $fileName . '_500x350.' . $extension;
+
+				$path = $photo->storeAs('images/' . auth()->id(), $fileName_def);
+				$path_232x132 = $photo->storeAs('images/' . auth()->id(), $filename_232x132);
+				$path_500x350 = $photo->storeAs('images/' . auth()->id(), $filename_500x350);
+
 				$storagePath = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
+
 				$image = Image::make($storagePath . $path)->fit(450, 300);
+				$image_232x132 = Image::make($storagePath . $path_232x132)->fit(232, 132);
+				$image_500x350 = Image::make($storagePath . $path_500x350)->fit(500, 350);
+
 				$image->save($storagePath . $path, 60);
+				$image_232x132->save($storagePath.$path_232x132, 60);
+				$image_500x350->save($storagePath.$path_500x350, 60);
 				Photos::create([
 					'src' => $path,
 					'room_id' => $room->id,

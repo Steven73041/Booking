@@ -23,7 +23,7 @@
                         @php $i = 0 @endphp
                         @foreach($room->photos as $photo)
                             <div class="carousel-item @if($i === 0) active @endif">
-                                <img class="d-block w-100" src="{{asset($photo->src)}}" alt="{{$room->name}}"/>
+                                <img class="d-block w-100" src="{{asset(get_image($photo->src, 'single_room'))}}" alt="{{$room->name}}"/>
                             </div>
                             @php $i++ @endphp
                         @endforeach
