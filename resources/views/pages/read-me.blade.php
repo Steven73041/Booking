@@ -16,7 +16,7 @@
                 </ul>
                 <h3>{{__('Hidden highlights')}}</h3>
                 <ul class="mb-4">
-                    <li>{{__('Image class cropping images to 450*450')}}</li>
+                    <li>{{__('Image class cropping images to 450*450, 500*350 and 232*132 to prevent serve scaled images.')}}</li>
                     <li>{{__('Session setting/unsetting for all critical requests (payments, bookings etc.)')}}</li>
                     <li>{{__('Strict security policies for CRUD based on ownership of object')}}</li>
                     <li>{{__('Weather "widget" by open API based on IP location, using FontAwesome for icons')}}</li>
