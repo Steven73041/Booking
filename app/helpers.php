@@ -8,6 +8,7 @@ if (!function_exists('get_author')) {
 if (!function_exists('get_image')) {
 	function get_image($img_src, $type = '') {
 		$img = explode(".", $img_src);
+		$size = null;
 		if ($type !== '') {
 			switch ($type) {
 				case "card":
