@@ -46,7 +46,7 @@
             <div class="card mx-auto col-md-2">
                 <div class="text-center">
                     @if(count($newroom->photos))
-                        <img class="card-img-top mx-auto mt-3" src="{{asset(get_image($newroom->photos[0]->src, 'card'))}}" alt="{{$newroom->name}}"/>
+                        <img width="232" height="132" class="card-img-top mx-auto mt-3" src="{{asset(get_image($newroom->photos[0]->src, 'card'))}}" alt="{{$newroom->name}}"/>
                     @endif
                 </div>
                 <div class="card-body p-1 text-center">
