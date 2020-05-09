@@ -75,8 +75,6 @@ body {
 }
 
 .card-img-top {
-    max-height: 132px;
-    max-width: 230px;
     margin: auto;
 }
 

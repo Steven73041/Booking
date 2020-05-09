@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('PageTitle')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v3/" defer></script>
     <link rel="stylesheet" href="{{url('/css/daterangepickerjquery.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{url('/css/bootstrap.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{url('/css/daterangepicker.css')}}"/>
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link type="text/css" href="{{url('/css/style.css')}}" rel="stylesheet">
+    <link type="text/css" href="{{url('/dist/style.css')}}" rel="stylesheet">
     <script type="text/javascript" src="{{url('/js/jquery3-4-1.js')}}"></script>
     <script type="text/javascript" src="{{url('/js/main.js')}}" defer></script>
 </head>
