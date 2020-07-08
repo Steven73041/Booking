@@ -149,10 +149,12 @@
 </div>
 @php
     $user = auth()->user();
-    $favorites = $user->favorites()->get('room_id');
     $fav_ids = [];
-    foreach($favorites as $favorite) {
-    	$fav_ids[] = $favorite->room_id;
+    if($user){
+        $favorites = $user->favorites()->get('room_id');
+        foreach($favorites as $favorite) {
+        	$fav_ids[] = $favorite->room_id;
+        }
     }
 @endphp
 <script>
