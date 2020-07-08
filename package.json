@@ -14,9 +14,9 @@
         "bootstrap": "^4.4.1",
         "cross-env": "^5.2.1",
         "gulp": "^4.0.2",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.1",
         "laravel-mix": "^4.1.4",
-        "lodash": "^4.17.15",
+        "lodash": "^4.17.17",
         "popper.js": "^1.16.0",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.24.4",
@@ -38,6 +38,8 @@
         "gulp-sourcemaps": "^2.6.5",
         "gulp-svgmin": "^2.2.0",
         "gulp-uglify": "^3.0.2",
-        "lazypipe": "^1.0.2"
+        "laravel-echo": "^1.8.0",
+        "lazypipe": "^1.0.2",
+        "pusher-js": "^6.0.3"
     }
 }

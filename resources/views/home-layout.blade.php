@@ -13,6 +13,8 @@
     <link type="text/css" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link type="text/css" href="{{url('/dist/style.css')}}" rel="stylesheet">
+    <script src="{{ asset('js/echo.js') }}"></script>
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <script type="text/javascript" src="{{url('/js/jquery3-4-1.min.js')}}"></script>
     <script type="text/javascript" src="{{url('/js/main.js')}}" defer></script>
 </head>
@@ -32,26 +34,31 @@
                        href="{{route('rooms.index')}}">{{__('Our Rooms')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName() == 'page.about') active @endif" href="{{route('page.about')}}">{{__('About us')}}</a>
+                    <a class="nav-link @if(Route::current()->getName() == 'page.about') active @endif"
+                       href="{{route('page.about')}}">{{__('About us')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName() == 'page.contact') active @endif" href="{{route('page.contact')}}">{{__('Contact')}}</a>
+                    <a class="nav-link @if(Route::current()->getName() == 'page.contact') active @endif"
+                       href="{{route('page.contact')}}">{{__('Contact')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if(Route::current()->getName() == 'page.read-me') active @endif" href="{{route('page.read-me')}}">{{__('Read Me')}}</a>
+                    <a class="nav-link @if(Route::current()->getName() == 'page.read-me') active @endif"
+                       href="{{route('page.read-me')}}">{{__('Read Me')}}</a>
                 </li>
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link @if(Route::current()->getName() == 'login') active @endif" href="{{route('login')}}">{{__('Login')}}</a>
+                        <a class="nav-link @if(Route::current()->getName() == 'login') active @endif"
+                           href="{{route('login')}}">{{__('Login')}}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link @if(Route::current()->getName() == 'register') active @endif" href="{{route('register')}}">{{__('Register')}}</a>
+                            <a class="nav-link @if(Route::current()->getName() == 'register') active @endif"
+                               href="{{route('register')}}">{{__('Register')}}</a>
                         </li>
                     @endif
                 @endguest
                 @if($weather_error === "OK")
-                <li class="nav-item ml-auto">
+                    <li class="nav-item ml-auto">
                         <a class="nav-link">{{$weather->name.", ".round($weather->main->temp)}}<sup>c</sup>
                             @php $i_f = '' @endphp
                             @switch($weather->weather[0]->main)
@@ -97,7 +104,8 @@
                                href="{{route('rooms.myRooms')}}">{{__('My Rooms')}}</a>
 
                             <a class="dropdown-item @if(Route::current()->getName() == 'favorites.index') active @endif"
-                               href="{{route('favorites.index')}}">{{__('My Favorites ')}}<i class="fas fa-heart"></i></a>
+                               href="{{route('favorites.index')}}">{{__('My Favorites ')}}<i
+                                        class="fas fa-heart"></i></a>
 
                             <a class="dropdown-item @if(Route::current()->getName() == 'rooms.create') active @endif"
                                href="{{route('rooms.create')}}">{{__('Create Room')}}</a>
@@ -121,5 +129,58 @@
     <a class="text-white mx-auto py-2" href="{{route('home')}}">{{__('Home')}}</a>
 </div>
 <a href="#" class="scrollToTop" title="{{__('Scroll to top')}}"></a>
+<div class="modal fade" id="RoomUpdated" tabindex="-1" role="dialog" aria-labelledby="RoomUpdated"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="RoomUpdatedTitle"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <a type="button" class="btn btn-secondary" href="">{{__('Check it Out!')}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+@php
+    $user = auth()->user();
+    $favorites = $user->favorites()->get('room_id');
+    $fav_ids = [];
+    foreach($favorites as $favorite) {
+    	$fav_ids[] = $favorite->room_id;
+    }
+@endphp
+<script>
+    let favorites = [{{implode(",", $fav_ids)}}];
+    window.Echo = new Echo({
+        broadcaster: 'pusher',
+        key: '47b882509c58b2b5952b',
+        cluster: 'eu',
+        encrypted: true,
+        logToConsole: true
+    });
+
+    Echo.channel('price_updated').listen('RoomPriceChanged', (data) => {
+        let room = data.room;
+        if (favorites.includes(room.id)) {
+            let domain_url = '{{url('/')}}';
+            let price = room.price;
+            let name = room.name;
+            let short_description = room.short_description;
+            let url = domain_url + "/rooms/" + room.slug;
+            let body_html = '<h2>A room you liked has updated its price!</h2><h5>' + price + '€ per night</h5><p>' + short_description + '</p>';
+
+            $('#RoomUpdated .modal-body').html(body_html);
+            $('#RoomUpdated .modal-footer a').attr('href', url);
+            $('#RoomUpdatedTitle').html(name);
+            $('#RoomUpdated').modal('show');
+        }
+    });
+</script>
 </body>
 </html>

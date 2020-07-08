@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RoomPriceChanged;
 use App\Rooms;
 use App\RoomTypes;
 use App\City;
@@ -136,8 +137,8 @@ class RoomsController extends Controller {
 					$image_500x350 = Image::make($storagePath . $path_500x350)->fit(500, 350);
 
 					$image->save($storagePath . $path, 60);
-					$image_232x132->save($storagePath.$path_232x132, 60);
-					$image_500x350->save($storagePath.$path_500x350, 60);
+					$image_232x132->save($storagePath . $path_232x132, 60);
+					$image_500x350->save($storagePath . $path_500x350, 60);
 					Photos::create([
 						'src' => $path,
 						'room_id' => $room->id,
@@ -184,6 +185,9 @@ class RoomsController extends Controller {
 		if ($validator->fails()) {
 			return back()->withErrors($validator)->withInput();
 		}
+		if ($room->price !== $request->price) {
+			event(new RoomPriceChanged($room));
+		}
 		$room->update([
 			'name' => $request->name,
 			'city_id' => $request->city_id,
@@ -229,8 +233,8 @@ class RoomsController extends Controller {
 				$image_500x350 = Image::make($storagePath . $path_500x350)->fit(500, 350);
 
 				$image->save($storagePath . $path, 60);
-				$image_232x132->save($storagePath.$path_232x132, 60);
-				$image_500x350->save($storagePath.$path_500x350, 60);
+				$image_232x132->save($storagePath . $path_232x132, 60);
+				$image_500x350->save($storagePath . $path_500x350, 60);
 				Photos::create([
 					'src' => $path,
 					'room_id' => $room->id,

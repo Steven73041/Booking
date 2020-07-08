@@ -10,7 +10,7 @@ class Rooms extends Model {
     use Sluggable;
     use SluggableScopeHelpers;
     protected $guarded = [];
-    protected $hidden = ['id'];
+    protected $hidden = [];
 
     public function type() {
         return $this->belongsTo(RoomTypes::class, 'room_type', 'id');
