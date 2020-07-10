@@ -17,11 +17,21 @@
                 <h3>{{__('Hidden highlights')}}</h3>
                 <ul class="mb-4">
                     <li>{{__('Image class cropping images to 450*450, 500*350 and 232*132 to prevent serve scaled images.')}}</li>
-                    <li>{{__('Session setting/unsetting for all critical requests (payments, bookings etc.)')}}</li>
-                    <li>{{__('Strict security policies for CRUD based on ownership of object')}}</li>
-                    <li>{{__('Weather "widget" by open API based on IP location, using FontAwesome for icons')}}</li>
-                    <li>{{__('Using bootsrap at 100% of building front-end before adding custom SASS')}}</li>
+                    <li>{{__('Session setting/unsetting for all critical requests (payments, bookings etc.).')}}</li>
+                    <li>{{__('Strict security policies for CRUD based on ownership of object.')}}</li>
+                    <li>{{__('Weather "widget" by open API based on IP location, using FontAwesome for icons.')}}</li>
+                    <li>{{__('Using bootsrap at 100% of building front-end before adding custom SASS.')}}</li>
                     <li>{{__('Using animate.js for some "not so" beautiful animations.')}}</li>
+                    <li>{!!__('Live Notifications about updates in price of favorite rooms (Using <a href="https://pusher.com/" target="_blank">Pusher</a>).')!!}
+                        <span class="badge badge-primary badge-pill">{{__('New')}}</span>
+                        <ol>
+                            <li>{{__('Create a user, then create a room.')}}</li>
+                            <li>{{__('Create another user, add in favorites the room created with the first user.')}}</li>
+                            <li>{{__('Update the Price of room with the first user.')}}</li>
+                            <li>{{__('Check the tab/window of the second user.')}}</li>
+                            <li>{{__('You can be anywhere in the site with the first to get notified about the price of favorite room.')}}</li>
+                        </ol>
+                    </li>
                 </ul>
                 <h3>{{__('Payments')}}</h3>
                 <h4>{{__('Test Cards:')}}</h4>
