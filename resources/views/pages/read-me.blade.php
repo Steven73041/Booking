@@ -29,7 +29,7 @@
                             <li>{{__('Create another user, add in favorites the room created with the first user.')}}</li>
                             <li>{{__('Update the Price of room with the first user.')}}</li>
                             <li>{{__('Check the tab/window of the second user.')}}</li>
-                            <li>{{__('You can be anywhere in the site with the first to get notified about the price of favorite room.')}}</li>
+                            <li>{{__('You can be anywhere in the site with the second user to get notified about the price of favorite room.')}}</li>
                         </ol>
                     </li>
                 </ul>
