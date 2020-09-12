@@ -1,5 +1,6 @@
 # Booking
 Booking system with Laravel framework
+https://laravelbook.exis.website/
 
 # Register yourself, play with it!
 the env.example has the configs, need:
@@ -14,3 +15,6 @@ laravel.sql is the database seeded, to create your own run the commands:
     <li>php artisan migrate</li>
     <li>php artisan db:seed</li>
 </ol>
+
+Read Me
+https://laravelbook.exis.website/read-me
